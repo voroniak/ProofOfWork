@@ -14,4 +14,6 @@ Block block = new()
 
 Sha256HashCompute sha256HashCompute = new Sha256HashCompute(startingZeros, path, block);
 
-sha256HashCompute.Compute();
+Block changedBlock = sha256HashCompute.Compute();
+
+Console.WriteLine($"Hash:{changedBlock.BlockHash} Valid:{sha256HashCompute.CheckIfValid()}");

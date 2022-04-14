@@ -13,7 +13,7 @@
             this.block = block;
         }
 
-        public void Compute()
+        public Block Compute()
         {
             while (!block.BlockHash.StartsWith(startingZeros))
             {
@@ -21,6 +21,8 @@
                 block.BlockHash = HashCompute.ComputeSha256Hash(block.Data + block.PoWNonce.ToString());
             }
             FileManager.CreateBlockFile(path, block);
+
+            return block;
         }
 
         public bool CheckIfValid()
